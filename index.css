@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+    background-color: rgba(255, 255, 255, 0.8); 
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -55,11 +55,28 @@ body {
 
 .nav-toggle {
     display: none;
-    font-size: 1.5rem;
     background: none;
     border: none;
     cursor: pointer;
-    color: #333;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-toggle svg {
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s ease;
+}
+
+.nav-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+.nav-toggle:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 4px;
 }
 
 @media (max-width: 768px) {
@@ -77,6 +94,8 @@ body {
 
     .nav-menu.active {
         display: flex; 
+        justify-content: center;
+        align-items: center;
     }
 
     .nav-toggle {
@@ -84,6 +103,7 @@ body {
     }
 }
 /* End Navbr Section */
+
 
 
 /* Hero Section */
@@ -150,6 +170,7 @@ body {
     }
 }
 /* End Hero Section */
+
 
 
 /* card section */
@@ -248,6 +269,8 @@ body {
 /* End card section */
 
 
+
+
 /* Featured section */
 
 
@@ -335,6 +358,8 @@ body {
     }
 }
 /* End Featured section */
+
+
 
 /* Subscribe Section Start */
 
@@ -427,27 +452,125 @@ body {
 }
 
 
-
-
 /* Subscribe Section End */
 
-/* Footer Section */
+
+
+/* footer images Start*/
+.lastimg {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    overflow-x: auto; 
+}
+
+
+.img {
+    position: relative;
+    flex: 1 1 auto;
+    height: 300px;
+    width: 250px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+
+.img::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease; 
+}
+
+.img:hover::before {
+    transform: scale(1.1); 
+}
+
+.img h5 {
+    position: absolute; 
+    z-index: 1; 
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    margin: 0;
+}
+
+.img1::before {
+    background-image: url('./images/footerimage1.png');
+}
+
+.img2::before {
+    background-image: url('./images/footerimage2.png');
+}
+
+.img3::before {
+    background-image: url('./images/footerimage3.png');
+}
+
+.img4::before {
+    background-image: url('./images/footerimage4.png');
+}
+
+.img5::before {
+    background-image: url('./images/footerimage5.png');
+}
+
+
+@media (max-width: 992px) {
+    .lastimg {
+        flex-wrap: wrap; 
+    }
+    .img {
+        flex: 1 1 calc(50% - 15px); 
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .lastimg {
+        flex-wrap: wrap; 
+    }
+    .img {
+        flex: 1 1 100%; 
+        height: 200px;
+    }
+}
+/* footer images End */
+
+
+
+/* Footer Section  Start*/
 .contactus {
     display: flex;
-    justify-content: space-evenly;
-    gap: 10%;
-    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 40px;
     background-image: url("./images/footerimage.png");
     background-repeat: repeat-y;
+    background-size: cover;
     color: black;
     font-family: Arial, sans-serif;
     text-align: left;
+    gap: 20px;
 }
 
 
 .footer-column {
     flex: 1 1 200px; 
-    min-width: 100px; 
+    min-width: 150px; 
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 .footer-column ul {
@@ -463,11 +586,12 @@ body {
 .footer-column a {
     text-decoration: none;
     color: #222;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-column a:hover {
-    color: #b7c177; 
+    color: #b7c177;
+    transform: scale(1.05);
 }
 
 
@@ -483,13 +607,15 @@ body {
     color: #222;
 }
 
+
 .social-icons {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .social-icons a {
-    margin: 0 10px;
-    text-decoration: none;
     font-size: 20px;
     color: #222;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -497,26 +623,58 @@ body {
 
 .social-icons a:hover {
     color: #b7c177;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1024px) {
     .contactus {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        padding: 20px;
     }
 
     .footer-column {
-        flex: 1 1 100%; 
-        text-align: center;
-    }
-
-    .companyinfo {
-        text-align: center;
+        flex: 1 1 45%;
+        min-width: 150px;
     }
 
     .social-icons a {
         font-size: 18px;
     }
 }
+
+@media (max-width: 768px) {
+    .contactus {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .companyinfo {
+        margin-top: 10px;
+    }
+
+    .social-icons {
+        gap: 10px;
+    }
+
+    .social-icons a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column li {
+        font-size: 12px;
+    }
+
+    .social-icons a {
+        font-size: 14px;
+    }
+}
+
+/* Footer Section End */
